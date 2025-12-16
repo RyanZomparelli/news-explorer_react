@@ -1,0 +1,61 @@
+/* .woff is older and supported by all browsers, even really old ones. .woff2 is 
+newer and much more efficient (better compression/better performance). Here I use
+both formats to get the best of both worlds. Browsers will try woff2 first (smaller, faster).
+If woff2 isn't supported, they'll fall back to woff. */
+
+@font-face {
+  font-family: "inter";
+  font-weight: 400;
+  font-style: normal;
+  src: url("./inter-400-regular.woff2") format("woff2"),
+    url("./inter-400-regular.woff") format("woff");
+}
+@font-face {
+  font-family: "inter";
+  font-weight: 500;
+  font-style: normal;
+  src: url("./inter-500.woff2") format("woff2"),
+    url("./inter-500.woff") format("woff");
+}
+@font-face {
+  font-family: "roboto";
+  font-weight: 400;
+  font-style: normal;
+  src: url("./roboto-400-regular.woff2") format("woff2"),
+    url("./roboto-400-regular.woff") format("woff");
+}
+@font-face {
+  font-family: "roboto";
+  font-weight: 500;
+  font-style: normal;
+  src: url("./roboto-500.woff2") format("woff2"),
+    url("./roboto-500.woff") format("woff");
+}
+@font-face {
+  font-family: "roboto";
+  font-weight: 700;
+  font-style: normal;
+  src: url("./roboto-700.woff2") format("woff2"),
+    url("./roboto-700.woff") format("woff");
+}
+@font-face {
+  font-family: "roboto";
+  font-weight: 900;
+  font-style: normal;
+  src: url("./roboto-900.woff2") format("woff2"),
+    url("./roboto-900.woff") format("woff");
+}
+@font-face {
+  font-family: "roboto-slab";
+  font-weight: 400;
+  font-style: normal;
+  src: url("./roboto-slab-400-regular.woff2") format("woff2"),
+    url("./roboto-slab-400-regular.woff") format("woff");
+}
+@font-face {
+  font-family: "roboto-slab";
+  font-weight: 700;
+  font-style: normal;
+  src: url("./roboto-slab-700.woff2") format("woff2"),
+    url("./roboto-slab-700.woff") format("woff");
+}
