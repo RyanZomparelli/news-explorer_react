@@ -1,0 +1,57 @@
+.header {
+  width: 100%;
+  height: 576px;
+  background-image: url("../assets/header_background.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.header__nav {
+  /* Keeps the nav container centered on very large screen resolutions.*/
+  display: flex;
+  justify-content: center;
+}
+
+.header__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header__text-container {
+  width: 608px;
+}
+
+.header__title {
+  font-family: roboto-slab, roboto, "Noto Serif", Georgia, serif;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 1.1;
+  color: white;
+  margin: 80px 0 32px;
+}
+
+.header__paragraph {
+  font-family: roboto, "Noto Serif", Georgia, serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  color: white;
+  margin: 0 0 88px 0;
+}
+
+@media screen and (max-width: 800px) {
+  .header__text-container {
+    width: 452px;
+  }
+
+  .header__title {
+    font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 589px) {
+  .header__text-container {
+    width: 285px;
+  }
+}
