@@ -38,6 +38,7 @@
   width: 100vw;
   height: 100vh;
   transition: background-color 0.4s ease-in-out;
+  pointer-events: none;
 }
 
 .mobile-nav__overlay_active {

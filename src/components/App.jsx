@@ -1,12 +1,15 @@
+import "../blocks/app.css";
+
+// LIBRARY IMPORTS
 import { useState } from "react";
 
-// Components
-import Header from "./Header";
+// COMPONENTS
+import Main from "./Main";
 
 function App() {
   return (
     <div className="app">
-      <Header />
+      <Main />
     </div>
   );
 }
