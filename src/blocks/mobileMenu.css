@@ -23,7 +23,7 @@
   overflow: hidden;
   /* Start hidden above. Negative y axis means up in CSS. -100% to the buttom of the navbar + the height of the navbar.*/
   transform: translateY(-165%);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.4s ease-in-out;
 }
 
 .mobile-nav__dropdown_open {
@@ -37,5 +37,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  transition: background-color 0.4s ease-in-out;
+}
+
+.mobile-nav__overlay_active {
   background-color: rgba(0, 0, 0, 0.5);
 }

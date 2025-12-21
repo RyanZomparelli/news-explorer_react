@@ -22,7 +22,13 @@ const MobileMenu = ({ isMobileMenuOpen, isLoggedIn, onCloseMobileMenu }) => {
           isMobileMenuOpen={isMobileMenuOpen}
         />
       </div>
-      {isMobileMenuOpen && <div className="mobile-nav__overlay"></div>}
+      <div
+        className={
+          isMobileMenuOpen
+            ? "mobile-nav__overlay mobile-nav__overlay_active"
+            : "mobile-nav__overlay"
+        }
+      ></div>
     </nav>
   );
 };
