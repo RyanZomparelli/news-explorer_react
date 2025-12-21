@@ -4,7 +4,7 @@
 
 .search-form__input {
   width: 480px;
-  /* The right side padding is to place the clear 'x' just to the left of the 
+  /* The right side padding is to place the clear input 'x' just to the left of the 
   search button and allow you to type your search that far.*/
   padding: 22px 60px 20px 24px;
   border: 1px solid #d1d2d6;
