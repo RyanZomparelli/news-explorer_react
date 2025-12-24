@@ -8,9 +8,9 @@ import MobileMenu from "./MobileMenu";
 
 import "../blocks/header.css";
 
-const Header = () => {
+const Header = ({ openModal, activeModal }) => {
   // Using for development until I implement the react context API.
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -29,6 +29,8 @@ const Header = () => {
           onToggleMobileMenu={toggleMobileMenu}
           onCloseMobileMenu={closeMobileMenu}
           isLoggedIn={isLoggedIn}
+          openModal={openModal}
+          activeModal={activeModal}
         />
       </div>
 
@@ -39,6 +41,7 @@ const Header = () => {
         isMobileMenuOpen={isMobileMenuOpen}
         isLoggedIn={isLoggedIn}
         onCloseMobileMenu={closeMobileMenu}
+        openModal={openModal}
       />
       <div className="header__content">
         <div className="header__text-container">

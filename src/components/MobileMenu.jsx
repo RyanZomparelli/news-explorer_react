@@ -3,7 +3,12 @@ import NavLinks from "./NavLinks";
 
 import "../blocks/mobileMenu.css";
 
-const MobileMenu = ({ isMobileMenuOpen, isLoggedIn, onCloseMobileMenu }) => {
+const MobileMenu = ({
+  isMobileMenuOpen,
+  isLoggedIn,
+  onCloseMobileMenu,
+  openModal,
+}) => {
   // FUTURE UPDATE: Disable scrolling or auto close the menu when scrolls are detected.
 
   return (
@@ -20,6 +25,7 @@ const MobileMenu = ({ isMobileMenuOpen, isLoggedIn, onCloseMobileMenu }) => {
           isLoggedIn={isLoggedIn}
           onCloseMobileMenu={onCloseMobileMenu}
           isMobileMenuOpen={isMobileMenuOpen}
+          onOpenModal={openModal}
         />
       </div>
       <div

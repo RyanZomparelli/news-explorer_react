@@ -10,7 +10,7 @@ import linkedInIcon from "../assets/linkedin.svg";
 const Footer = () => {
   return (
     <footer className="footer">
-      <p className="footer__paragraph">&copy; 2024 ZOMP, Powered by News API</p>
+      <p className="footer__paragraph">&copy; 2025 ZOMP, Powered by News API</p>
       <div className="footer__links">
         <Link to="/" className="footer__link">
           Home

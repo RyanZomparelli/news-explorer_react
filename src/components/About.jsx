@@ -20,7 +20,7 @@ const About = () => {
         </p>
         <p className="about__paragraph">
           Throughout my training, I’ve completed multiple end-to-end projects
-          that mirror real industry workflows—including feature planning,
+          that mirror real industry workflows, including feature planning,
           component architecture, accessibility compliance, and responsive
           design. Working through TripleTen’s structured sprints strengthened my
           ability to break down complex problems, work iteratively, and deliver

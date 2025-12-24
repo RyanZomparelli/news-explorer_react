@@ -23,13 +23,14 @@ const Navigation = ({
   onToggleMobileMenu,
   onCloseMobileMenu,
   isLoggedIn,
+  openModal,
+  activeModal,
 }) => {
   // useLocation of react-router-dom gives us an object with a pathname property
   // corresponding to the current route. I use this for the elements that don't have
   // access to isActive.
   const location = useLocation();
   const isSavedView = location.pathname === "/saved-news";
-
   return (
     // The MobileMenu dropdown has the same NavLogo that the desktop has, so instead of
     // covering it with the MobileMenu, the menu drops right below the 'nav bar'
@@ -46,20 +47,23 @@ const Navigation = ({
           isSavedView={isSavedView}
           isMobileMenuOpen={isMobileMenuOpen}
           onCloseMobileMenu={onCloseMobileMenu}
+          onOpenModal={openModal}
         />
       </div>
       <button className="nav__mobile-btn" onClick={onToggleMobileMenu}>
-        <img
-          className="nav__burger-img"
-          src={
-            isMobileMenuOpen
-              ? closeIconLight
-              : isSavedView
-              ? burgerIconDark
-              : burgerIconLight
-          }
-          alt="Mobile"
-        />
+        {!activeModal && (
+          <img
+            className="nav__burger-img"
+            src={
+              isMobileMenuOpen
+                ? closeIconLight
+                : isSavedView
+                ? burgerIconDark
+                : burgerIconLight
+            }
+            alt="Mobile"
+          />
+        )}
       </button>
     </nav>
   );
