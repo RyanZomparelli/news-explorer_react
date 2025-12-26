@@ -4,7 +4,7 @@ const SearchForm = () => {
   return (
     // When dealing with search forms that don't have visible titles or labels use
     // 'aria-label' and 'role' attributes on inputs and form elements for accessibility.
-    <form className="search-form" name="search-form" role="search">
+    <form className="search-form" name="search-form" role="search" noValidate>
       <input
         className="search-form__input"
         type="search"

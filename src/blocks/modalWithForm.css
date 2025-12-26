@@ -39,6 +39,7 @@
   font-size: 14px;
   line-height: 1;
   margin-bottom: 31px;
+  /* position: relative; */
 }
 
 .modal-form__input::placeholder {
@@ -52,14 +53,38 @@
   margin-bottom: 0;
 }
 
+.modal-form__error {
+  font-family: inter, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+    Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: #ff0000;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}
+
+.modal-form__error_email {
+  top: 132px;
+}
+
+.modal-form__error_password {
+  top: 205px;
+}
+
+.modal-form__error_username {
+  top: 278px;
+}
+
 .modal-form__submit-btn {
+  background-color: #2f71e5;
+  color: white;
   max-width: 360px;
   width: 100%;
   height: 64px;
   border: none;
   border-radius: 50px;
-  background-color: #2f71e5;
-  color: white;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.3;
@@ -76,6 +101,23 @@
 
 .modal-form__submit-btn:active {
   background-color: #2a65cc;
+}
+
+.modal-form__submit-btn_disabled {
+  background-color: #e6e8eb;
+  color: #b6bcbf;
+  max-width: 360px;
+  width: 100%;
+  height: 64px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 39px 0 16px 0;
+  margin-bottom: 16px;
+  transition: 0.3s ease-out;
+  cursor: pointer;
 }
 
 .modal-form__alt-btn {

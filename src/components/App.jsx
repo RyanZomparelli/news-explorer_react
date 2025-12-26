@@ -17,7 +17,6 @@ function App() {
   return (
     <div className="app">
       <Main openModal={openModal} activeModal={activeModal} />
-      {/* Not yet created: */}
       <LoginModal
         activeModal={activeModal === "Sign in"}
         onOpen={openModal}

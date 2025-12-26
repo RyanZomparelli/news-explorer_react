@@ -6,11 +6,15 @@ import { useEffect } from "react";
 // ASSETS
 import closeIcon from "../assets/close_btn_light.svg";
 
+// CUSTOM HOOKS
+import useFormWithValidation from "../hooks/useFormWithValidation";
+
 const Modal = ({
   modalName,
   activeModal,
   onClose,
   isClosable = true,
+  onReset,
   children,
 }) => {
   // I can handle both of the specific modal closing helpers (overlayClick, esc close)
@@ -23,6 +27,7 @@ const Modal = ({
     // e.target = what is actually clicked on | e.currentTarget = the element that has an eventListener attached. onClick handles the listener.
     if (e.target === e.currentTarget && isClosable) {
       onClose();
+      onReset({ email: "", password: "", username: "" });
     }
   };
 
@@ -34,6 +39,7 @@ const Modal = ({
     const handleEscClose = (e) => {
       if (e.key === "Escape") {
         onClose();
+        onReset({ email: "", password: "", username: "" });
       }
     };
 
@@ -55,7 +61,13 @@ const Modal = ({
     >
       <div className={`modal__container modal__container_type_${modalName}`}>
         {isClosable && (
-          <button className="modal__close-btn" onClick={onClose}>
+          <button
+            className="modal__close-btn"
+            onClick={() => {
+              onClose();
+              onReset({ email: "", password: "", username: "" });
+            }}
+          >
             <img
               src={closeIcon}
               alt="Close button."

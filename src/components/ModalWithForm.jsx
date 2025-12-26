@@ -12,6 +12,8 @@ const ModalWithForm = ({
   submitText,
   altText,
   onSubmit,
+  isValid,
+  resetForm,
   children,
 }) => {
   return (
@@ -19,17 +21,30 @@ const ModalWithForm = ({
       modalName="modal-with-form"
       activeModal={activeModal}
       onClose={onClose}
+      onReset={resetForm}
     >
-      <form className="modal-form" name={name} onSubmit={onSubmit}>
+      <form className="modal-form" name={name} onSubmit={onSubmit} noValidate>
         <h4 className="modal-form__title">{title}</h4>
         {children}
-        <button className="modal-form__submit-btn" type="submit">
+        <button
+          className={
+            !isValid
+              ? "modal-form__submit-btn_disabled"
+              : "modal-form__submit-btn"
+          }
+          type="submit"
+          disabled={!isValid}
+        >
           {submitText}
         </button>
         <button
           className="modal-form__alt-btn"
           type="button"
-          onClick={() => onOpen(altText)}
+          onClick={() => {
+            resetForm({ email: "", password: "", username: "" });
+            onClose();
+            onOpen(altText);
+          }}
         >
           or <span className="modal-form__alt-text">{altText}</span>
         </button>
