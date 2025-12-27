@@ -1,0 +1,22 @@
+.not-found {
+  padding: 86px 0 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found__image {
+  margin-bottom: 32px;
+}
+
+.not-found__title {
+  margin: 0 0 16px 0;
+  padding: 0;
+  font-family: roboto-slab, roboto, "Noto Serif", Georgia, serif;
+}
+
+.not-found__paragraph {
+  margin: 0;
+  padding: 0;
+  font-family: roboto, "Noto Serif", Georgia, serif;
+}
