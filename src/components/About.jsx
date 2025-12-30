@@ -2,7 +2,6 @@ import "../blocks/about.css";
 
 // ASSETS
 import redRocks from "../assets/redRock.jpg";
-import sweater from "../assets/sweater.jpg";
 
 const About = () => {
   return (

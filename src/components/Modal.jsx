@@ -6,9 +6,6 @@ import { useEffect } from "react";
 // ASSETS
 import closeIcon from "../assets/close_btn_light.svg";
 
-// CUSTOM HOOKS
-import useFormWithValidation from "../hooks/useFormWithValidation";
-
 const Modal = ({
   modalName,
   activeModal,

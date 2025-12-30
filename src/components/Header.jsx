@@ -8,7 +8,7 @@ import MobileMenu from "./MobileMenu";
 
 import "../blocks/header.css";
 
-const Header = ({ openModal, activeModal }) => {
+const Header = ({ openModal, activeModal, handleSearch, setSearchStatus }) => {
   // Using for development until I implement the react context API.
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -51,7 +51,10 @@ const Header = ({ openModal, activeModal }) => {
             account.
           </p>
         </div>
-        <SearchForm />
+        <SearchForm
+          handleSearch={handleSearch}
+          setSearchStatus={setSearchStatus}
+        />
       </div>
     </header>
   );

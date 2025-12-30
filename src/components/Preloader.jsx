@@ -1,7 +1,12 @@
 import "../blocks/preloader.css";
 
-const Preloader = () => {
-  return <div className="circle-preloader"></div>;
+const Preloader = ({ children, type }) => {
+  return (
+    <div className="circle-preloader">
+      <div className="circle-preloader__animation"></div>
+      {children}
+    </div>
+  );
 };
 
 export default Preloader;
