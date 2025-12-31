@@ -2,6 +2,7 @@ import "../blocks/main.css";
 
 //COMPONENTS
 import Header from "./Header";
+import NewsCardList from "./NewsCardList";
 import About from "./About";
 import Footer from "./Footer";
 import Preloader from "./Preloader";
@@ -45,7 +46,7 @@ const Main = ({
           <p className="not-found__paragraph">Please try again.</p>
         </NotFound>
       ) : searchStatus === "success" ? (
-        ""
+        <NewsCardList newsArticles={newsArticles} />
       ) : (
         ""
       )}

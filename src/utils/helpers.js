@@ -1,5 +1,7 @@
+// DATE FORMATTING
+
 export const getFormattedDate = () => {
-  // Current Date formatted for NewsAPI.
+  // For API request url.
   const getToDate = () => {
     // new Date returns the full day, month, year, and time.
     const today = new Date();
@@ -9,6 +11,7 @@ export const getFormattedDate = () => {
     return formattedDate;
   };
 
+  // For API request url.
   // Per the project requirements, Date 1 week from current date formatted for NewsApi.
   const getFromDate = () => {
     const today = new Date();
@@ -21,8 +24,27 @@ export const getFormattedDate = () => {
     return oneWeekAgoFormatted;
   };
 
-  return { getToDate, getFromDate };
+  // For Api response data.
+  const convertDate = (isoString) => {
+    // Turn my string into a JS Date object.
+    const date = new Date(isoString);
+
+    const options = {
+      year: "numeric",
+      month: "short", // 'short' gives 'Jan', 'Feb', etc..
+      day: "numeric",
+      timeZone: "UTC", // The time will be Global standart time
+    };
+
+    // 'en-US' sets the formatting of the orientation the date items are displayed.
+    const formattedDate = date.toLocaleDateString("en-US", options);
+    return formattedDate;
+  };
+
+  return { getToDate, getFromDate, convertDate };
 };
+
+// API INTERACTIONS
 
 export const getRequestHeaders = (token = null) => {
   if (!token) {

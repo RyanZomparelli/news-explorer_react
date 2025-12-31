@@ -12,7 +12,6 @@ const SearchForm = ({ handleSearch, setSearchStatus }) => {
   });
 
   const handleSubmit = (e) => {
-    console.log("From SearchForm: Search submitted");
     e.preventDefault();
     handleSearch(values.search);
   };
