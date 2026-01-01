@@ -1,0 +1,28 @@
+.saved-news {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* This is for the mobileMenu in the SavedNews view */
+.saved-news__nav {
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* This is for sticky footer. */
+.saved-news__content {
+  /* This grows to fill available space */
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* Center the content, like <NotFound> or <NewsCards> */
+  align-items: center;
+  justify-content: center;
+  /* When the container stetches, match the background color of the content children. */
+  background-color: rgb(245, 246, 247);
+}

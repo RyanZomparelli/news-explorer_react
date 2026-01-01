@@ -4,12 +4,13 @@ import { useState } from "react";
 //UTILITY
 import * as News from "../utils/newsApi";
 
-const useSearch = (setIsLoading) => {
+const useSearch = () => {
   const [newsArticles, setNewsArticles] = useState([]);
   const [searchStatus, setSearchStatus] = useState("");
+  const [loadingSearch, setIsLoadingSearch] = useState(false);
 
   const handleSearch = async (query) => {
-    setIsLoading(true);
+    setIsLoadingSearch(true);
     // Reset for a new search.
     setSearchStatus("");
     setNewsArticles([]);
@@ -20,7 +21,7 @@ const useSearch = (setIsLoading) => {
       if (!trimmedQuery) {
         setSearchStatus("no-keyword");
         setTimeout(() => {
-          setIsLoading(false);
+          setIsLoadingSearch(false);
         }, 1000);
         return;
       }
@@ -31,7 +32,7 @@ const useSearch = (setIsLoading) => {
       if (articles.length === 0) {
         setSearchStatus("no-results");
         setTimeout(() => {
-          setIsLoading(false);
+          setIsLoadingSearch(false);
         }, 1000);
         return;
       }
@@ -39,13 +40,13 @@ const useSearch = (setIsLoading) => {
       setSearchStatus("success");
       setNewsArticles(articles);
       setTimeout(() => {
-        setIsLoading(false);
+        setIsLoadingSearch(false);
       }, 1000);
     } catch (err) {
       console.error(err);
       setSearchStatus("error");
       setTimeout(() => {
-        setIsLoading(false);
+        setIsLoadingSearch(false);
       }, 1000);
     }
   };
@@ -56,6 +57,7 @@ const useSearch = (setIsLoading) => {
     searchStatus,
     setSearchStatus,
     handleSearch,
+    loadingSearch,
   };
 };
 

@@ -19,7 +19,28 @@
   position: absolute;
   top: 24px;
   right: 24px;
-  cursor: pointer;
+  cursor: grab;
+}
+
+/* Improvement: Create a sliding animation */
+.news-card__save-msg {
+  position: absolute;
+  background: #1a1b22;
+  color: white;
+  padding: 11px 20px;
+  border-radius: 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  bottom: 2px;
+  left: -80px;
+  transform: translateX(-50%);
+  transition: transform 1s ease-in;
+  font-family: roboto, "Noto Serif", Georgia, serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  background-color: white;
+  color: black;
 }
 
 .news-card__img {

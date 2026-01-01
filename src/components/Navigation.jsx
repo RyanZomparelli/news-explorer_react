@@ -22,9 +22,9 @@ const Navigation = ({
   isMobileMenuOpen,
   onToggleMobileMenu,
   onCloseMobileMenu,
-  isLoggedIn,
   openModal,
   activeModal,
+  type,
 }) => {
   // useLocation of react-router-dom gives us an object with a pathname property
   // corresponding to the current route. I use this for the elements that don't have
@@ -35,7 +35,11 @@ const Navigation = ({
     // The MobileMenu dropdown has the same NavLogo that the desktop has, so instead of
     // covering it with the MobileMenu, the menu drops right below the 'nav bar'
     // at the top of the screen and the back-ground color changes to match the menu.
-    <nav className={isMobileMenuOpen ? "nav nav_type_mobile" : "nav"}>
+    <nav
+      className={
+        isMobileMenuOpen ? "nav nav_type_mobile" : `nav nav_type_${type}`
+      }
+    >
       <NavLogo
         isSavedView={isSavedView}
         isMobileMenuOpen={isMobileMenuOpen}
@@ -43,7 +47,7 @@ const Navigation = ({
       />
       <div className="nav__links">
         <NavLinks
-          isLoggedIn={isLoggedIn}
+          // isLoggedIn={isLoggedIn}
           isSavedView={isSavedView}
           isMobileMenuOpen={isMobileMenuOpen}
           onCloseMobileMenu={onCloseMobileMenu}

@@ -9,6 +9,11 @@
   padding: 0 104px;
   box-sizing: border-box;
   transition: background-color 0.2s ease-in-out;
+  margin: 0 auto;
+}
+
+.nav_type_saved-news {
+  border-bottom: 2px solid #d1d2d6;
 }
 
 .nav__links {

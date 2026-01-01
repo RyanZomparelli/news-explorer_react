@@ -1,5 +1,8 @@
 import "../blocks/newsCard.css";
 
+// LIBRARY IMPORTS
+import { useState } from "react";
+
 // ASSETS
 import fallBackImg from "../assets/article_img_fallback.svg";
 import saveIconNormal from "../assets/save-normal.svg";
@@ -9,18 +12,54 @@ import saveIconMarked from "../assets/save-marked.svg";
 // UTILITY
 import * as Helpers from "../utils/helpers";
 
-const NewsCard = ({ newsArticle }) => {
+const NewsCard = ({ newsArticle, isLoggedIn, openModal }) => {
+  const [showMessage, setShowMessage] = useState(false);
+  // Same logic from SignoutBtn component.
+  const [isHovered, setIsHovered] = useState(false);
+  // Actual like functionality in stage 3.
+  const [isLiked, setIsLiked] = useState(false);
+  const toggleIsLiked = () => {
+    setIsLiked(!isLiked);
+  };
+
   const { convertDate } = Helpers.getFormattedDate();
   return (
     <li className="news-articles__list-item">
       <article className="news-card">
+        {/* Maybe make this a component that handles save for "/" and delete functionality for "/saved-news". */}
         <button
           className="news-card__save-btn"
           type="button"
-          // disabled={!isLoggedIn}
+          onClick={() => {
+            if (!isLoggedIn) {
+              openModal("Sign in");
+            }
+            toggleIsLiked();
+          }}
+          onMouseEnter={() => {
+            !isLoggedIn && setShowMessage(true);
+            setIsHovered(true);
+          }}
+          onMouseLeave={() => {
+            setShowMessage(false);
+            setIsHovered(false);
+          }}
         >
+          {/* Make this span a seperate component. Remove conditional render to enabele better styling */}
+          {showMessage && !isLoggedIn && (
+            <span className="news-card__save-msg">
+              Sign in to save articles
+            </span>
+          )}
+
           <img
-            src={saveIconNormal}
+            src={
+              isLoggedIn && isLiked
+                ? saveIconMarked
+                : isLoggedIn && isHovered
+                ? saveIconHover
+                : saveIconNormal
+            }
             alt="Save button."
             className="news-card__save-icon"
           />

@@ -2,11 +2,17 @@ import "../blocks/newsCardList.css";
 
 // LIBRARY IMPORTS
 import { useState } from "react";
+import { useContext } from "react";
 
 // COMPONENTS
 import NewsCard from "./NewsCard";
 
-const NewsCardList = ({ newsArticles }) => {
+// CONTEXT
+import CurrentUserContext from "../contexts/CurrentUserContext";
+
+const NewsCardList = ({ newsArticles, openModal }) => {
+  const { isLoggedIn } = useContext(CurrentUserContext);
+
   // Articles to display.
   let [count, setCount] = useState(3);
 
@@ -25,7 +31,13 @@ const NewsCardList = ({ newsArticles }) => {
         <h3 className="news-articles__header">Search results</h3>
         <ul className="news-articles__list">
           {articles.map((article) => {
-            return <NewsCard newsArticle={article} />;
+            return (
+              <NewsCard
+                newsArticle={article}
+                isLoggedIn={isLoggedIn}
+                openModal={openModal}
+              />
+            );
           })}
         </ul>
         {count < newsArticles.length && (

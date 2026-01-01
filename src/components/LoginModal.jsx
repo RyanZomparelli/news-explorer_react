@@ -6,12 +6,19 @@ import ModalWithForm from "./ModalWithForm";
 // CUSTOM HOOKS
 import useFormWithValidation from "../hooks/useFormWithValidation";
 
-const LoginModal = ({ activeModal, onOpen, onClose }) => {
+const LoginModal = ({ activeModal, onOpen, onClose, handleLogin }) => {
   const { values, errors, isValid, handleChange, getErrorMsg, resetForm } =
     useFormWithValidation({
       email: "",
       password: "",
     });
+
+  // Events bubble up through the components and data flows back down.
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLogin(values);
+    resetForm({ email: "", password: "" });
+  };
   return (
     <>
       <ModalWithForm
@@ -24,6 +31,7 @@ const LoginModal = ({ activeModal, onOpen, onClose }) => {
         onClose={onClose}
         isValid={isValid}
         resetForm={resetForm}
+        handleSubmit={handleSubmit}
       >
         <fieldset className="modal-form__inputs">
           <label htmlFor="login-email" className="modal-form__label">

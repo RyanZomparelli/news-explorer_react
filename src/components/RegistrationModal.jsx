@@ -6,13 +6,25 @@ import ModalWithForm from "./ModalWithForm";
 // CUSTOM HOOKS
 import useFormWithValidation from "../hooks/useFormWithValidation";
 
-const RegistrationModal = ({ activeModal, onOpen, onClose }) => {
+const RegistrationModal = ({
+  activeModal,
+  onOpen,
+  onClose,
+  message,
+  handleRegistration,
+}) => {
   const { values, errors, isValid, handleChange, getErrorMsg, resetForm } =
     useFormWithValidation({
       email: "",
       password: "",
       username: "",
     });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleRegistration(values);
+    resetForm({ email: "", password: "", username: "" });
+  };
 
   return (
     <>
@@ -26,6 +38,8 @@ const RegistrationModal = ({ activeModal, onOpen, onClose }) => {
         onClose={onClose}
         isValid={isValid}
         resetForm={resetForm}
+        message={message}
+        handleSubmit={handleSubmit}
       >
         <fieldset className="modal-form__inputs">
           <label htmlFor="registration-email" className="modal-form__label">

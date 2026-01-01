@@ -8,19 +8,15 @@ import MobileMenu from "./MobileMenu";
 
 import "../blocks/header.css";
 
-const Header = ({ openModal, activeModal, handleSearch, setSearchStatus }) => {
-  // Using for development until I implement the react context API.
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-  const closeMobileMenu = () => {
-    // When you call setIsMobileMenuOpen(false) and the current value is already false,
-    // React recognizes that nothing has changed and skips the re-render. This is relevant
-    // when I pass this function to the click handlers of links, like the NavLogo.
-    setIsMobileMenuOpen(false);
-  };
-
+const Header = ({
+  openModal,
+  isMobileMenuOpen,
+  toggleMobileMenu,
+  closeMobileMenu,
+  activeModal,
+  handleSearch,
+  setSearchStatus,
+}) => {
   return (
     <header className="header">
       <div className="header__nav">
@@ -28,7 +24,6 @@ const Header = ({ openModal, activeModal, handleSearch, setSearchStatus }) => {
           isMobileMenuOpen={isMobileMenuOpen}
           onToggleMobileMenu={toggleMobileMenu}
           onCloseMobileMenu={closeMobileMenu}
-          isLoggedIn={isLoggedIn}
           openModal={openModal}
           activeModal={activeModal}
         />
@@ -39,7 +34,6 @@ const Header = ({ openModal, activeModal, handleSearch, setSearchStatus }) => {
       behavior. This way it's always rendered, just hidden initally, also achieved with the css. */}
       <MobileMenu
         isMobileMenuOpen={isMobileMenuOpen}
-        isLoggedIn={isLoggedIn}
         onCloseMobileMenu={closeMobileMenu}
         openModal={openModal}
       />

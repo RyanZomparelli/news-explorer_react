@@ -11,6 +11,7 @@ const Modal = ({
   activeModal,
   onClose,
   isClosable = true,
+  type,
   onReset,
   children,
 }) => {
@@ -24,7 +25,12 @@ const Modal = ({
     // e.target = what is actually clicked on | e.currentTarget = the element that has an eventListener attached. onClick handles the listener.
     if (e.target === e.currentTarget && isClosable) {
       onClose();
-      onReset({ email: "", password: "", username: "" });
+      // onReset only exists from Modals that have a form so I need to check if it
+      // exists before I call it or I get a typeError that onReset is not a function.
+      // Like when I close the FeedbackModal which also uses the Modal component.
+      if (onReset) {
+        onReset({ email: "", password: "", username: "" });
+      }
     }
   };
 
@@ -36,7 +42,9 @@ const Modal = ({
     const handleEscClose = (e) => {
       if (e.key === "Escape") {
         onClose();
-        onReset({ email: "", password: "", username: "" });
+        if (onReset) {
+          onReset({ email: "", password: "", username: "" });
+        }
       }
     };
 
@@ -62,7 +70,9 @@ const Modal = ({
             className="modal__close-btn"
             onClick={() => {
               onClose();
-              onReset({ email: "", password: "", username: "" });
+              if (onReset) {
+                onReset({ email: "", password: "", username: "" });
+              }
             }}
           >
             <img

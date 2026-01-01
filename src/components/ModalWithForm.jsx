@@ -11,10 +11,11 @@ const ModalWithForm = ({
   name,
   submitText,
   altText,
-  onSubmit,
+  handleSubmit,
   isValid,
   resetForm,
   children,
+  message,
 }) => {
   return (
     <Modal
@@ -23,9 +24,17 @@ const ModalWithForm = ({
       onClose={onClose}
       onReset={resetForm}
     >
-      <form className="modal-form" name={name} onSubmit={onSubmit} noValidate>
+      <form
+        className="modal-form"
+        name={name}
+        onSubmit={handleSubmit}
+        noValidate
+      >
         <h4 className="modal-form__title">{title}</h4>
         {children}
+        <span className="modal-form__error modal-form__error_server">
+          {message}
+        </span>
         <button
           className={
             !isValid

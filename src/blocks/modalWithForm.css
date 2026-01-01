@@ -1,4 +1,4 @@
-/* Handles styles for LoginModal and RegistrationModal  */
+/* Handles styles for LoginModal and RegistrationModal.  */
 
 .modal-form {
   font-family: roboto, "Noto Serif", Georgia, serif;
@@ -39,7 +39,6 @@
   font-size: 14px;
   line-height: 1;
   margin-bottom: 31px;
-  /* position: relative; */
 }
 
 .modal-form__input::placeholder {
@@ -75,6 +74,11 @@
 
 .modal-form__error_username {
   top: 278px;
+}
+
+.modal-form__error_server {
+  top: 300px;
+  align-self: center;
 }
 
 .modal-form__submit-btn {

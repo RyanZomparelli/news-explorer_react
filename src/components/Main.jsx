@@ -12,10 +12,13 @@ const Main = ({
   openModal,
   activeModal,
   handleSearch,
-  isLoading,
+  loadingSearch,
   newsArticles,
   searchStatus,
   setSearchStatus,
+  isMobileMenuOpen,
+  toggleMobileMenu,
+  closeMobileMenu,
 }) => {
   return (
     <main className="main">
@@ -24,10 +27,13 @@ const Main = ({
         activeModal={activeModal}
         handleSearch={handleSearch}
         setSearchStatus={setSearchStatus}
+        isMobileMenuOpen={isMobileMenuOpen}
+        toggleMobileMenu={toggleMobileMenu}
+        closeMobileMenu={closeMobileMenu}
       />
       {/* Could I improve this component by putting this logic into a helper function? */}
-      {isLoading ? (
-        <Preloader>
+      {loadingSearch ? (
+        <Preloader type="search">
           <p className="circle-preloader__text">Searching for news...</p>
         </Preloader>
       ) : searchStatus === "no-keyword" ? (
@@ -46,7 +52,7 @@ const Main = ({
           <p className="not-found__paragraph">Please try again.</p>
         </NotFound>
       ) : searchStatus === "success" ? (
-        <NewsCardList newsArticles={newsArticles} />
+        <NewsCardList newsArticles={newsArticles} openModal={openModal} />
       ) : (
         ""
       )}

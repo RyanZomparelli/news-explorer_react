@@ -1,23 +1,22 @@
 // LIBRARY IMPORTS
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
 
-//COMPONENTS
+// COMPONENTS
 import SignoutBtn from "./SignoutBtn";
+
+// CONTEXT
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 import "../blocks/navLinks.css";
 // Both NavLinks and NavLogo recieve isMobileMenuOpen to conditonally render styles.
 const NavLinks = ({
-  isLoggedIn,
   isSavedView,
   isMobileMenuOpen,
   onCloseMobileMenu,
   onOpenModal,
 }) => {
-  // Potential problem. Because NavLinks handles styling for the MobileMenu, and
-  // Navigation components, the components are tightly coupled. I can solve most
-  // styling conflicts between instances of NavLink and MobileMenu with
-  // CSS specificity rules, but NavLinks could be improved by being more independent.
-  // Maybe by making a NavLinksMobile component.
+  const { isLoggedIn } = useContext(CurrentUserContext);
 
   return (
     <>
@@ -64,7 +63,10 @@ const NavLinks = ({
           >
             Saved articles
           </NavLink>
-          <SignoutBtn isSavedView={isSavedView} />
+          <SignoutBtn
+            isSavedView={isSavedView}
+            onCloseMobileMenu={onCloseMobileMenu}
+          />
         </>
       )}
     </>
