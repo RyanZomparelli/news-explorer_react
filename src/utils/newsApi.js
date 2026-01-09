@@ -11,9 +11,6 @@ export const getNewsArticles = (query) => {
   return fetch(
     `${baseUrl}?q=${encodeURIComponent(
       query
-    )}&from=${getFromDate()}&to=${getToDate()}&pageSize=100`,
-    {
-      headers: Helpers.getRequestHeaders(newsApiKey),
-    }
+    )}&from=${getFromDate()}&to=${getToDate()}&pageSize=100&apiKey=${newsApiKey}`
   ).then(Helpers.handleResponse);
 };

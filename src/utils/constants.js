@@ -10,4 +10,4 @@ export const proxyApiBaseUrl = "https://nomoreparties.co/news/v2/everything";
 // script it's set to production. Otherwise it's value is development.
 // import.meta.env is Vite's native env access over the older, process.env.
 export const baseUrl =
-  import.meta.env.NODE_ENV === "production" ? proxyApiBaseUrl : newsApiBaseUrl;
+  process.env.NODE_ENV === "production" ? proxyApiBaseUrl : newsApiBaseUrl;
