@@ -22,6 +22,7 @@ const SavedNewsCard = ({ newsArticle, openModal }) => {
   return (
     <li className="news-articles__list-item">
       <article className="news-card">
+        <span className="news-card__keyword">{`${newsArticle.keyword}`}</span>
         {/* Maybe make this a component that handles save for "/" and delete functionality for "/saved-news". */}
         <button
           className="news-card__save-btn"

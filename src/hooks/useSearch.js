@@ -38,6 +38,12 @@ const useSearch = () => {
       }
 
       setSearchStatus("success");
+
+      // Grab the keyword
+      const keyword = query;
+      // Add a keyword property to each article object in the articles array.
+      articles.forEach((article) => (article.keyword = keyword));
+
       setNewsArticles(articles);
       setTimeout(() => {
         setIsLoadingSearch(false);

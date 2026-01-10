@@ -54,7 +54,7 @@ const FeedbackModal = ({
               type="button"
               onClick={onClose}
             >
-              No
+              Cancel
             </button>
           </>
         )}

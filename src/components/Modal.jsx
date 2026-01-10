@@ -65,7 +65,7 @@ const Modal = ({
       onClick={handleOverlayClick}
     >
       <div className={`modal__container modal__container_type_${modalName}`}>
-        {isClosable && (
+        {isClosable && type !== "delete-article" && (
           <button
             className="modal__close-btn"
             onClick={() => {
