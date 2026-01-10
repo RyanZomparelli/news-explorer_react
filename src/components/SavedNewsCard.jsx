@@ -1,31 +1,22 @@
-import "../blocks/newsCard.css";
+import "../blocks/NewsCard.css";
 
 // LIBRARY IMPORTS
 import { useState } from "react";
 
 // ASSETS
+import trashIcon from "../assets/trashcan.svg";
+import trashIconDark from "../assets/trashcan-dark.svg";
 import fallBackImg from "../assets/article_img_fallback.svg";
-import saveIconNormal from "../assets/save-normal.svg";
-import saveIconHover from "../assets/save-hover.svg";
-import saveIconMarked from "../assets/save-marked.svg";
 
 // UTILITY
 import * as Helpers from "../utils/helpers";
 
-const NewsCard = ({
-  newsArticle,
-  isLoggedIn,
-  openModal,
-  handleSaveArticle,
-}) => {
+// Logic basically duplicated from NewsCard. Could be improved by creating a
+// generic NewsCard component and then more specific children of NewsCard.
+const SavedNewsCard = ({ newsArticle, openModal }) => {
   const [showMessage, setShowMessage] = useState(false);
   // Same logic from SignoutBtn component.
   const [isHovered, setIsHovered] = useState(false);
-  // Actual like functionality in stage 3.
-  const [isLiked, setIsLiked] = useState(false);
-  const toggleIsLiked = () => {
-    setIsLiked(!isLiked);
-  };
 
   const { convertDate } = Helpers.getFormattedDate();
   return (
@@ -36,15 +27,15 @@ const NewsCard = ({
           className="news-card__save-btn"
           type="button"
           onClick={() => {
-            if (!isLoggedIn) {
-              openModal("Sign in");
-              return;
-            }
-            toggleIsLiked();
-            handleSaveArticle(newsArticle);
+            openModal(
+              "Feedback",
+              "Are you sure you want to delete this article?",
+              "delete-article",
+              newsArticle
+            );
           }}
           onMouseEnter={() => {
-            !isLoggedIn && setShowMessage(true);
+            setShowMessage(true);
             setIsHovered(true);
           }}
           onMouseLeave={() => {
@@ -53,21 +44,13 @@ const NewsCard = ({
           }}
         >
           {/* Make this span a seperate component. Remove conditional render to enabele better styling */}
-          {showMessage && !isLoggedIn && (
-            <span className="news-card__save-msg">
-              Sign in to save articles
-            </span>
+          {showMessage && (
+            <span className="news-card__save-msg">Remove from saved</span>
           )}
 
           <img
-            src={
-              isLoggedIn && isLiked
-                ? saveIconMarked
-                : isLoggedIn && isHovered
-                ? saveIconHover
-                : saveIconNormal
-            }
-            alt="Save button."
+            src={isHovered ? trashIconDark : trashIcon}
+            alt="Delete button."
             className="news-card__save-icon"
           />
         </button>
@@ -91,4 +74,4 @@ const NewsCard = ({
   );
 };
 
-export default NewsCard;
+export default SavedNewsCard;

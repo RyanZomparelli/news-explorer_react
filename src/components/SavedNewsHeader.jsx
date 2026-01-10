@@ -6,13 +6,13 @@ import { useContext } from "react";
 // CONTEXT
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-const SavedNewsHeader = ({ savedNews }) => {
+const SavedNewsHeader = ({ savedNewsArticles }) => {
   const { currentUser } = useContext(CurrentUserContext);
   return (
     <section className="saved-news-header">
       <p className="saved-news-header__paragraph">Saved articles</p>
       <h1 className="saved-news-header__title">
-        {`${currentUser.name}, you have 0 saved articles.`}
+        {`${currentUser.name}, you have ${savedNewsArticles.length} saved articles.`}
       </h1>
       <p className="saved-news-header__keywords">
         By keywords:

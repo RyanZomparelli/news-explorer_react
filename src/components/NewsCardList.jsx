@@ -10,7 +10,7 @@ import NewsCard from "./NewsCard";
 // CONTEXT
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-const NewsCardList = ({ newsArticles, openModal }) => {
+const NewsCardList = ({ newsArticles, openModal, handleSaveArticle }) => {
   const { isLoggedIn } = useContext(CurrentUserContext);
 
   // Articles to display.
@@ -36,6 +36,7 @@ const NewsCardList = ({ newsArticles, openModal }) => {
                 newsArticle={article}
                 isLoggedIn={isLoggedIn}
                 openModal={openModal}
+                handleSaveArticle={handleSaveArticle}
               />
             );
           })}

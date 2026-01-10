@@ -18,6 +18,7 @@ import useModal from "../hooks/useModal";
 import useMobile from "../hooks/useMobile";
 import useSearch from "../hooks/useSearch";
 import useAuth from "../hooks/useAuth";
+import useSavedNews from "../hooks/useSavedNews";
 
 // CONTEXT
 import CurrentUserContext from "../contexts/CurrentUserContext";
@@ -28,7 +29,8 @@ function App() {
 
   // CUSTOM HOOKS
 
-  const { activeModal, openModal, closeModal, message, type } = useModal();
+  const { activeModal, openModal, closeModal, message, type, articleToDelete } =
+    useModal();
 
   // I like using custom hooks to keep the component clean and readable.
   const {
@@ -52,6 +54,17 @@ function App() {
   } = useAuth(setIsLoading, openModal, closeModal);
 
   const { isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useMobile();
+
+  const {
+    savedNewsArticles,
+    getSavedArticles,
+    handleSaveArticle,
+    handleDeleteArticle,
+  } = useSavedNews();
+
+  useEffect(() => {
+    getSavedArticles();
+  }, []);
 
   // Reset search form on page load.
   useEffect(() => {
@@ -97,6 +110,7 @@ function App() {
                 isMobileMenuOpen={isMobileMenuOpen}
                 toggleMobileMenu={toggleMobileMenu}
                 closeMobileMenu={closeMobileMenu}
+                handleSaveArticle={handleSaveArticle}
               />
             }
           ></Route>
@@ -110,6 +124,8 @@ function App() {
                   isMobileMenuOpen={isMobileMenuOpen}
                   toggleMobileMenu={toggleMobileMenu}
                   closeMobileMenu={closeMobileMenu}
+                  savedNewsArticles={savedNewsArticles}
+                  handleDeleteArticle={handleDeleteArticle}
                 />
               </ProtectedRoute>
             }
@@ -141,6 +157,8 @@ function App() {
           onClose={closeModal}
           message={message}
           type={type}
+          articleToDelete={articleToDelete}
+          handleDeleteArticle={handleDeleteArticle}
         />
       </div>
     </CurrentUserContext.Provider>

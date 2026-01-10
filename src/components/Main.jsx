@@ -19,6 +19,7 @@ const Main = ({
   isMobileMenuOpen,
   toggleMobileMenu,
   closeMobileMenu,
+  handleSaveArticle,
 }) => {
   return (
     <main className="main">
@@ -52,7 +53,11 @@ const Main = ({
           <p className="not-found__paragraph">Please try again.</p>
         </NotFound>
       ) : searchStatus === "success" ? (
-        <NewsCardList newsArticles={newsArticles} openModal={openModal} />
+        <NewsCardList
+          newsArticles={newsArticles}
+          openModal={openModal}
+          handleSaveArticle={handleSaveArticle}
+        />
       ) : (
         ""
       )}

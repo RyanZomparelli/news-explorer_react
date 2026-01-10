@@ -4,6 +4,7 @@ import "../blocks/savedNews.css";
 import Navigation from "./Navigation";
 import MobileMenu from "./MobileMenu";
 import SavedNewsHeader from "./SavedNewsHeader";
+import SavedNewsCard from "./SavedNewsCard";
 import NotFound from "./NotFound";
 import Footer from "./Footer";
 
@@ -12,6 +13,8 @@ const SavedNews = ({
   isMobileMenuOpen,
   toggleMobileMenu,
   closeMobileMenu,
+  savedNewsArticles,
+  handleDeleteArticle,
 }) => {
   return (
     <section className="saved-news">
@@ -29,11 +32,25 @@ const SavedNews = ({
           onCloseMobileMenu={closeMobileMenu}
         />
       </div>
-      <SavedNewsHeader />
+      <SavedNewsHeader savedNewsArticles={savedNewsArticles} />
       <div className="saved-news__content">
-        <NotFound>
-          <p>No saved artcles yet!</p>
-        </NotFound>
+        {savedNewsArticles.length === 0 ? (
+          <NotFound>
+            <p>No saved artcles yet!</p>
+          </NotFound>
+        ) : (
+          <ul className="saved-news__list">
+            {savedNewsArticles.map((article) => {
+              return (
+                <SavedNewsCard
+                  newsArticle={article}
+                  handleDeleteArticle={handleDeleteArticle}
+                  openModal={openModal}
+                />
+              );
+            })}
+          </ul>
+        )}
       </div>
       <Footer />
     </section>

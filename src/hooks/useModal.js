@@ -7,21 +7,25 @@ const useModal = () => {
   const [message, setMessage] = useState("");
   // For the FeedbackModal like, 'success', 'error', 'warning', 'loading'.
   const [type, setType] = useState("");
+  // For the FeedbackModal type, 'delete-article'
+  const [articleToDelete, setArticleToDelete] = useState(null);
 
   // message and type are optional.
-  const openModal = (modal, message = "", type = "") => {
+  const openModal = (modal, message = "", type = "", newsArticle = null) => {
     setActiveModal(modal);
     setMessage(message);
     setType(type);
+    setArticleToDelete(newsArticle);
   };
 
   const closeModal = () => {
     setActiveModal("");
     setMessage("");
     setType("");
+    setArticleToDelete(null);
   };
 
-  return { activeModal, openModal, closeModal, message, type };
+  return { activeModal, openModal, closeModal, message, type, articleToDelete };
 };
 
 export default useModal;

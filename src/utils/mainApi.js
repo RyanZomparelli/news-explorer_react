@@ -17,5 +17,5 @@ export const deleteItem = (articleToDelete) => {
     return article.url !== articleToDelete.url;
   });
 
-  localStorage.setItem("saved-articles", updatedArticles);
+  localStorage.setItem("saved-articles", JSON.stringify(updatedArticles));
 };
