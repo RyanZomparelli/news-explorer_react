@@ -9,7 +9,7 @@
 Check out these videos, where I describe my project
 and some challenges I faced while building it:
 
-- **UI & Frontend Overview (5 min):**
+- **UI & Frontend Overview (5 min):** https://youtu.be/vLmWgOTlxhQ
 - **Backend & API Overview (5 min):** Coming soon
 
 ---
