@@ -47,7 +47,6 @@ const Navigation = ({
       />
       <div className="nav__links">
         <NavLinks
-          // isLoggedIn={isLoggedIn}
           isSavedView={isSavedView}
           isMobileMenuOpen={isMobileMenuOpen}
           onCloseMobileMenu={onCloseMobileMenu}

@@ -2,6 +2,9 @@
 
 **News Explorer** is a responsive React application that allows users to search for current news articles by keyword, explore results from the past week, and save articles to their personal account. This repository contains the **frontend** of the application. Backend integration is planned and will be added in a future update.
 
+**Deployed Site**:
+https://newsexplorer.host2go.net/
+
 🎨 **Design:** https://www.figma.com/design/3ottwMEhlBt95Dbn8dw1NH/Your-Final-Project
 
 ## 🎥 Project Pitch Videos

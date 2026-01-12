@@ -13,12 +13,13 @@ const Main = ({
   activeModal,
   handleSearch,
   loadingSearch,
-  newsArticles,
   searchStatus,
   setSearchStatus,
   isMobileMenuOpen,
   toggleMobileMenu,
   closeMobileMenu,
+  newsArticles,
+  savedNewsArticles,
   handleSaveArticle,
 }) => {
   return (
@@ -55,6 +56,7 @@ const Main = ({
       ) : searchStatus === "success" ? (
         <NewsCardList
           newsArticles={newsArticles}
+          savedNewsArticles={savedNewsArticles}
           openModal={openModal}
           handleSaveArticle={handleSaveArticle}
         />

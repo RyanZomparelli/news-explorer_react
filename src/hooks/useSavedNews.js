@@ -10,8 +10,19 @@ const useSavedNews = () => {
   };
 
   const handleSaveArticle = (newsArticle) => {
-    Api.saveItem(newsArticle);
-    setSavedNewsArticles(Api.getItems());
+    try {
+      const savedArticles = Api.getItems();
+      const alreadyLiked = savedArticles.some((article) => {
+        newsArticle.url === article.url;
+      });
+
+      if (!alreadyLiked) {
+        Api.saveItem(newsArticle);
+        setSavedNewsArticles(Api.getItems());
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleDeleteArticle = (newsArticle) => {

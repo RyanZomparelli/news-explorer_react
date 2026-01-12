@@ -3,22 +3,16 @@ import "../blocks/savedNewsHeader.css";
 // LIBRARY IMPORTS
 import { useContext } from "react";
 
+// UTILITY
+import { buildKeywordsArray, formatKeywords } from "../utils/helpers";
+
 // CONTEXT
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
 const SavedNewsHeader = ({ savedNewsArticles }) => {
   const { currentUser } = useContext(CurrentUserContext);
 
-  // Check for duplicates as keywords is built.
-  let keywords = [];
-  savedNewsArticles.forEach((article) => {
-    if (!keywords.includes(article.keyword)) {
-      keywords.push(article.keyword);
-    }
-  });
-  const keywordsFormatted = `${keywords.slice(0, 2).join(" , ")} and ${
-    keywords.length <= 2 ? 0 : keywords.length < 3 ? 1 : keywords.length - 2
-  } others`;
+  const keywords = buildKeywordsArray(savedNewsArticles);
 
   return (
     <section className="saved-news-header">
@@ -29,7 +23,8 @@ const SavedNewsHeader = ({ savedNewsArticles }) => {
       <p className="saved-news-header__keywords">
         By keywords:
         <span className="saved-news-header__keywords_bold">
-          {keywords.length === 0 ? "" : ` ${keywordsFormatted}`}
+          {" "}
+          {formatKeywords(keywords)}
         </span>
       </p>
     </section>

@@ -104,12 +104,13 @@ function App() {
                 activeModal={activeModal}
                 handleSearch={handleSearch}
                 loadingSearch={loadingSearch}
-                newsArticles={newsArticles}
                 searchStatus={searchStatus}
                 setSearchStatus={setSearchStatus}
                 isMobileMenuOpen={isMobileMenuOpen}
                 toggleMobileMenu={toggleMobileMenu}
                 closeMobileMenu={closeMobileMenu}
+                newsArticles={newsArticles}
+                savedNewsArticles={savedNewsArticles}
                 handleSaveArticle={handleSaveArticle}
               />
             }

@@ -10,7 +10,12 @@ import NewsCard from "./NewsCard";
 // CONTEXT
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-const NewsCardList = ({ newsArticles, openModal, handleSaveArticle }) => {
+const NewsCardList = ({
+  newsArticles,
+  savedNewsArticles,
+  openModal,
+  handleSaveArticle,
+}) => {
   const { isLoggedIn } = useContext(CurrentUserContext);
 
   // Articles to display.
@@ -33,9 +38,12 @@ const NewsCardList = ({ newsArticles, openModal, handleSaveArticle }) => {
           {articles.map((article) => {
             return (
               <NewsCard
+                key={article.title}
                 newsArticle={article}
                 isLoggedIn={isLoggedIn}
                 openModal={openModal}
+                newsArticles={newsArticles}
+                savedNewsArticles={savedNewsArticles}
                 handleSaveArticle={handleSaveArticle}
               />
             );

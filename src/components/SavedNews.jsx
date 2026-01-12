@@ -43,6 +43,7 @@ const SavedNews = ({
             {savedNewsArticles.map((article) => {
               return (
                 <SavedNewsCard
+                  key={article.url}
                   newsArticle={article}
                   handleDeleteArticle={handleDeleteArticle}
                   openModal={openModal}

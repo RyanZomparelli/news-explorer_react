@@ -56,8 +56,12 @@
 @media screen and (max-width: 640px) {
   .footer {
     flex-direction: column-reverse;
-    gap: 15px;
+    gap: 38px;
     padding: 0 16px 26px 16px;
+  }
+
+  .footer__paragraph {
+    align-self: flex-start;
   }
 
   .footer__links {
@@ -66,7 +70,9 @@
     width: 100%;
   }
 
-  .footer__link:first-of-type {
-    margin-right: 0px;
+  .footer__text {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
   }
 }

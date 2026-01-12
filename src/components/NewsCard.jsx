@@ -16,16 +16,18 @@ const NewsCard = ({
   newsArticle,
   isLoggedIn,
   openModal,
+  newsArticles,
+  savedNewsArticles,
   handleSaveArticle,
 }) => {
   const [showMessage, setShowMessage] = useState(false);
   // Same logic from SignoutBtn component.
   const [isHovered, setIsHovered] = useState(false);
-  // Actual like functionality in stage 3.
-  const [isLiked, setIsLiked] = useState(false);
-  const toggleIsLiked = () => {
-    setIsLiked(!isLiked);
-  };
+
+  // Determine if this newsArticle is already saved.
+  const isAlreadyLiked = savedNewsArticles.some(
+    (article) => newsArticle.url === article.url
+  );
 
   const { convertDate } = Helpers.getFormattedDate();
   return (
@@ -40,8 +42,16 @@ const NewsCard = ({
               openModal("Sign in");
               return;
             }
-            toggleIsLiked();
-            handleSaveArticle(newsArticle);
+            if (isAlreadyLiked) {
+              openModal(
+                "Feedback",
+                "Are you sure you want to remove this from your saved news?",
+                "delete-article",
+                newsArticle
+              );
+            } else {
+              handleSaveArticle(newsArticle);
+            }
           }}
           onMouseEnter={() => {
             !isLoggedIn && setShowMessage(true);
@@ -61,7 +71,7 @@ const NewsCard = ({
 
           <img
             src={
-              isLoggedIn && isLiked
+              isLoggedIn && isAlreadyLiked
                 ? saveIconMarked
                 : isLoggedIn && isHovered
                 ? saveIconHover

@@ -62,3 +62,29 @@ export const handleResponse = (res) => {
   // the request originates.
   return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
 };
+
+// Check for duplicates as the array is built.
+export const buildKeywordsArray = (newsArticles) => {
+  let keywords = [];
+  newsArticles.forEach((article) => {
+    if (!keywords.includes(article.keyword)) {
+      keywords.push(article.keyword);
+    }
+  });
+
+  return keywords;
+};
+
+export const formatKeywords = (keywords) => {
+  if (keywords.length >= 3) {
+    return `${keywords.slice(0, 2).join(" , ")} and ${
+      keywords.length - 2
+    } others`;
+  } else if (keywords.length === 2) {
+    return `${keywords[0]} and ${keywords[1]}`;
+  } else if (keywords.length === 1) {
+    return keywords;
+  } else {
+    return "";
+  }
+};
