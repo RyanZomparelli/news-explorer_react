@@ -1,0 +1,33 @@
+.feedback-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.feedback-modal__message {
+  font-family: roboto, "Noto Serif", Georgia, serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.feedback-modal__button {
+  background-color: transparent;
+  border: none;
+  font-family: inter, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+    Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1;
+  color: #2f71e5;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.feedback-modal__button:hover {
+  color: #347eff;
+}

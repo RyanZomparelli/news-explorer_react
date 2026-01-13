@@ -1,0 +1,52 @@
+.saved-news {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* This is for the mobileMenu in the SavedNews view */
+.saved-news__nav {
+  /* This width was set to 100vw and was causing the horizontal scrolling. */
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* This is for sticky footer. */
+.saved-news__content {
+  /* This grows to fill available space */
+  flex: 1;
+  max-width: 1440px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* Center the content, like <NotFound> or <NewsCards> */
+  align-items: center;
+  justify-content: center;
+  /* When the container stetches, match the background color of the content children. */
+  background-color: rgb(245, 246, 247);
+  padding: 62px 102px;
+  box-sizing: border-box;
+}
+
+.saved-news__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+/* This media query isn't working until 749px for some reason... */
+@media screen and (max-width: 833px) {
+  .saved-news__content {
+    padding: 32px 40px;
+  }
+
+  .saved-news__list {
+    gap: 8px;
+  }
+}

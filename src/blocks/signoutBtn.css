@@ -1,0 +1,48 @@
+.nav__signout-btn {
+  width: 112px;
+  height: 48px;
+  border: 1px solid white;
+  border-radius: 100px;
+  background: transparent;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+
+.mobile-nav__dropdown .nav__signout-btn {
+  margin-top: 22px;
+}
+
+.nav__signout-btn:hover {
+  /* Though the blue icon is swapped instantly, I still think the smooth transition,
+     albiet very brief is a nice touch. And I don't think you can tell the difference between the icon and the button. */
+  transition: 0.1s ease-in;
+  color: #2f71e5;
+  border-color: #2f71e5;
+}
+
+.nav__signout-btn_saved {
+  color: black;
+  border: 1px solid black;
+}
+
+.nav__signout-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav__signout-text {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+@media screen and (max-width: 800px) {
+  .nav__signout-btn {
+    width: 100px;
+    height: 40px;
+  }
+}

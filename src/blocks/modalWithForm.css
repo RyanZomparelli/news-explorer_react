@@ -1,0 +1,144 @@
+/* Handles styles for LoginModal and RegistrationModal.  */
+
+.modal-form {
+  font-family: roboto, "Noto Serif", Georgia, serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-form__title {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1;
+  margin: 0;
+  margin-bottom: 22px;
+  padding: 0;
+}
+
+.modal-form__inputs {
+  font-family: inter, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+    Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+.modal-form__label {
+  color: #2f71e5;
+  margin-bottom: 9px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.modal-form__input {
+  border: none;
+  border-bottom: 1px solid#00000026;
+  color: #000000;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+  margin-bottom: 31px;
+}
+
+.modal-form__input::placeholder {
+  color: #00000026;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.modal-form__input:last-of-type {
+  margin-bottom: 0;
+}
+
+.modal-form__error {
+  font-family: inter, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+    Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: #ff0000;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}
+
+.modal-form__error_email {
+  top: 132px;
+}
+
+.modal-form__error_password {
+  top: 205px;
+}
+
+.modal-form__error_username {
+  top: 278px;
+}
+
+.modal-form__error_server {
+  top: 300px;
+  align-self: center;
+}
+
+.modal-form__submit-btn {
+  background-color: #2f71e5;
+  color: white;
+  max-width: 360px;
+  width: 100%;
+  height: 64px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 39px 0 16px 0;
+  margin-bottom: 16px;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+}
+
+.modal-form__submit-btn:hover {
+  background-color: #347eff;
+  transition: 0.2s ease-in;
+}
+
+.modal-form__submit-btn:active {
+  background-color: #2a65cc;
+}
+
+.modal-form__submit-btn_disabled {
+  background-color: #e6e8eb;
+  color: #b6bcbf;
+  max-width: 360px;
+  width: 100%;
+  height: 64px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 39px 0 16px 0;
+  margin-bottom: 16px;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+}
+
+.modal-form__alt-btn {
+  border: none;
+  background-color: transparent;
+  margin: 0 auto;
+  padding: 0;
+  cursor: pointer;
+  width: fit-content;
+  transition: 0.3s ease-out;
+}
+
+.modal-form__alt-text {
+  color: #2f71e5;
+}
+
+.modal-form__alt-text:hover {
+  color: #347eff;
+  transition: 0.2s ease-in;
+}

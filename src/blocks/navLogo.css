@@ -1,0 +1,29 @@
+.nav__logo {
+  font-family: roboto-slab, roboto, "Noto Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.1;
+  color: white;
+  margin: 30px 0 0 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.nav__logo_saved-view {
+  color: black;
+}
+
+@media screen and (max-width: 800px) {
+  .nav__logo {
+    margin: 23px 0 18px 0;
+  }
+}
+
+@media screen and (max-width: 589px) {
+  .nav__logo {
+    font-size: 16px;
+    line-height: 1.2;
+    margin: 16px 0;
+    align-self: center;
+  }
+}

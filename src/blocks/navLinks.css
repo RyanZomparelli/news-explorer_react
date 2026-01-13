@@ -1,0 +1,117 @@
+.nav__home-link {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+  padding: 0 10px 26px 10px;
+  margin: 30px 0 0 0;
+  border-bottom: 3px solid transparent;
+  transition: 0.2s ease-out;
+}
+
+.nav__home-link:hover {
+  transition: 0.1s ease-in;
+  border-bottom: 3px solid #2f71e5;
+}
+
+.nav__home-link_active {
+  color: white;
+  border-bottom: 3px solid white;
+}
+
+/* CSS specificity rules, (apply to .nav__home-link, only when in mobile-nav__dropdown).*/
+.mobile-nav__dropdown .nav__home-link {
+  /* Same color as saved link when not active in the mobile menu. */
+  color: #b6bcbf;
+  padding-left: 0;
+}
+
+.mobile-nav__dropdown .nav__home-link_active {
+  color: white;
+}
+
+.nav__signin-btn {
+  width: 176px;
+  height: 48px;
+  border: 1px solid white;
+  border-radius: 100px;
+  background: transparent;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+  margin: 19px 0 13px 42px;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+
+.nav__signin-btn:hover {
+  transition: 0.1s ease-in;
+  color: #2f71e5;
+  border-color: #2f71e5;
+}
+
+.mobile-nav__dropdown .nav__signin-btn {
+  margin: auto 0;
+  align-self: center;
+  height: 56px;
+  max-width: 288px;
+  width: 100%;
+}
+
+.nav__saved-link {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+  color: #b6bcbf;
+  text-decoration: none;
+  margin: 30px 32px 0 44px;
+  padding: 0 23px 26px;
+  border-bottom: 3px solid transparent;
+  transition: 0.2s ease-out;
+}
+
+.nav__saved-link:hover {
+  transition: 0.1s ease-in;
+  border-bottom: 3px solid #2f71e5;
+}
+
+.nav__saved-link_active {
+  color: black;
+  border-bottom: 3px solid black;
+}
+
+.mobile-nav__dropdown .nav__saved-link {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.mobile-nav__dropdown .nav__saved-link_active {
+  color: white;
+  border-bottom: 3px solid white;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .nav__home-link {
+    font-size: 16px;
+    line-height: 1.3;
+    padding: 0 8px 17px 8px;
+    margin-top: 22px;
+  }
+
+  .nav__signin-btn {
+    width: 152px;
+    height: 40px;
+    margin: 14px 0 12px 16px;
+  }
+
+  .nav__saved-link {
+    margin: 22px 16px 0;
+    padding-bottom: 17px;
+  }
+}

@@ -1,0 +1,70 @@
+/* .modal is the overlay and positions the modal container. */
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none; /* Key: prevents interaction when closed */
+  transition: opacity 0.6s ease;
+}
+
+.modal__opened {
+  opacity: 1;
+  pointer-events: auto; /* Re-enables interaction when open */
+}
+
+.modal__container {
+  max-width: 430px;
+  width: 100%;
+  border-radius: 16px;
+  background-color: white;
+  position: relative;
+  padding: 36px 34px 28px 34px;
+  /* If you set a width and padding on the container, it will end up bigger than 
+  your desired width unless you set border-box */
+  box-sizing: border-box;
+}
+
+.modal__close-btn {
+  background-color: transparent;
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__close-icon {
+  height: 40px;
+  width: 40px;
+}
+
+@media screen and (max-width: 536px) {
+  .modal__close-btn {
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 445px) {
+  /* Improvement: Make this transformation appy to form modals only. */
+  .modal {
+    transform: translateY(-165%);
+    transition: transform 0.4s ease-in-out;
+    position: fixed;
+    top: 120px;
+  }
+
+  .modal__container {
+    height: 100vh;
+  }
+
+  .modal__opened {
+    transform: translateY(0);
+  }
+}

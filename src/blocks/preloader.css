@@ -1,0 +1,50 @@
+.circle-preloader {
+  height: 282px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background-color: #f5f6f7;
+}
+
+.circle-preloader__overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.circle-preloader__animation {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #444;
+  border-bottom-color: #888;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  animation: spin 0.75s infinite linear;
+}
+
+.circle-preloader__text {
+  margin: 178px 0 0 0;
+  font-family: roboto, "Noto Serif", Georgia, serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #6c707a;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
