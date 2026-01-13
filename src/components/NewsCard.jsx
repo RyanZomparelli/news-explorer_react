@@ -16,7 +16,6 @@ const NewsCard = ({
   newsArticle,
   isLoggedIn,
   openModal,
-  newsArticles,
   savedNewsArticles,
   handleSaveArticle,
 }) => {

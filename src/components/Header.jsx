@@ -1,6 +1,3 @@
-// LIBRARY IMPORTS
-import { useState } from "react";
-
 // COMPONENTS
 import Navigation from "./Navigation";
 import SearchForm from "./SearchForm";

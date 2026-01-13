@@ -58,7 +58,6 @@ const useAuth = (setIsLoading, openModal, closeModal) => {
           "error"
         );
       }, 1000);
-    } finally {
     }
   };
 

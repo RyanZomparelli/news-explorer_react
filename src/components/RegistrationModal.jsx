@@ -46,7 +46,7 @@ const RegistrationModal = ({
             Email
           </label>
           <input
-            id="registration-emai"
+            id="registration-email"
             type="email"
             name="email"
             value={values.email}

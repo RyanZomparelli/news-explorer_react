@@ -1,5 +1,3 @@
-import "../blocks/app.css";
-
 // LIBRARY IMPORTS
 import { useState, useEffect } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
@@ -46,8 +44,6 @@ function App() {
   const {
     currentUser,
     isLoggedIn,
-    setCurrentUser,
-    setIsLoggedIn,
     handleRegistration,
     handleLogin,
     handleSignOut,
