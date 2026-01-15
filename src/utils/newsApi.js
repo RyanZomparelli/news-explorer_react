@@ -1,5 +1,5 @@
 // UTILITY
-import { newsApiKey, baseUrl } from "./constants";
+import { newsApiKey, newsApiBaseUrl } from "./constants";
 import * as Helpers from "../utils/helpers";
 
 // Find out if this needs to be inside getNewsArticles(). When are the dates created?
@@ -9,7 +9,7 @@ const { getToDate, getFromDate } = Helpers.getFormattedDate();
 // characters and spaces specifically for url query parameters.
 export const getNewsArticles = (query) => {
   return fetch(
-    `${baseUrl}?q=${encodeURIComponent(
+    `${newsApiBaseUrl}?q=${encodeURIComponent(
       query
     )}&from=${getFromDate()}&to=${getToDate()}&pageSize=100&apiKey=${newsApiKey}`
   ).then(Helpers.handleResponse);

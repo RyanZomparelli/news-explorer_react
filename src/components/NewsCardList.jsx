@@ -15,6 +15,7 @@ const NewsCardList = ({
   savedNewsArticles,
   openModal,
   handleSaveArticle,
+  getSavedArticles,
 }) => {
   const { isLoggedIn } = useContext(CurrentUserContext);
 
@@ -45,6 +46,7 @@ const NewsCardList = ({
                 newsArticles={newsArticles}
                 savedNewsArticles={savedNewsArticles}
                 handleSaveArticle={handleSaveArticle}
+                getSavedArticles={getSavedArticles}
               />
             );
           })}

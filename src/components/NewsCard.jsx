@@ -25,10 +25,18 @@ const NewsCard = ({
 
   // Determine if this newsArticle is already saved.
   const isAlreadyLiked = savedNewsArticles.some(
-    (article) => newsArticle.url === article.url
+    (article) => article.link === newsArticle.url
   );
 
+  // Only saved articles have an id property. So I need to pass a saved article to
+  // the deleteHandler instead of the newsArticle available in this component.
+  // .filter() returns a new array so Im destructuring the item to pass just the object.
+  const [savedArticle] = savedNewsArticles.filter((article) => {
+    return article.link === newsArticle.url;
+  });
+
   const { convertDate } = Helpers.getFormattedDate();
+
   return (
     <li className="news-articles__list-item">
       <article className="news-card">
@@ -42,12 +50,12 @@ const NewsCard = ({
               return;
             }
             if (isAlreadyLiked) {
-              openModal(
-                "Feedback",
-                "Are you sure you want to remove this from your saved news?",
-                "delete-article",
-                newsArticle
-              );
+              openModal("Feedback", {
+                message:
+                  "Are you sure you want to remove this from your saved news?",
+                type: "delete-article",
+                articleToDelete: savedArticle,
+              });
             } else {
               handleSaveArticle(newsArticle);
             }
@@ -80,7 +88,7 @@ const NewsCard = ({
             className="news-card__save-icon"
           />
         </button>
-        <a href={newsArticle.url} className="news-card__link" target="_blank">
+        <a href={newsArticle.link} className="news-card__link" target="_blank">
           <img
             src={newsArticle.urlToImage || fallBackImg}
             alt="Article image."

@@ -1,8 +1,6 @@
 import { useCallback, useState } from "react";
 
-// Hook for controlling and validating a form. Basic usage is the
-// same as described above. For the validation:
-//
+// Hook for controlling and validating a form. For the validation:
 // - create HTML elements in the form component to display the
 //   error messages. The error messages will be stored as
 //   `errors.nameOfInput`, where`nameOfInput` is the value of

@@ -15,7 +15,7 @@ const ModalWithForm = ({
   isValid,
   resetForm,
   children,
-  message,
+  registrationEmailError,
 }) => {
   return (
     <Modal
@@ -33,7 +33,7 @@ const ModalWithForm = ({
         <h4 className="modal-form__title">{title}</h4>
         {children}
         <span className="modal-form__error modal-form__error_server">
-          {message}
+          {registrationEmailError}
         </span>
         <button
           className={

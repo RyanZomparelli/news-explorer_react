@@ -28,12 +28,11 @@ const SavedNewsCard = ({ newsArticle, openModal }) => {
           className="news-card__save-btn"
           type="button"
           onClick={() => {
-            openModal(
-              "Feedback",
-              "Are you sure you want to delete this article?",
-              "delete-article",
-              newsArticle
-            );
+            openModal("Feedback", {
+              message: "Are you sure you want to delete this article?",
+              type: "delete-article",
+              articleToDelete: newsArticle,
+            });
           }}
           onMouseEnter={() => {
             setShowMessage(true);
@@ -57,16 +56,16 @@ const SavedNewsCard = ({ newsArticle, openModal }) => {
         </button>
         <a href={newsArticle.url} className="news-card__link" target="_blank">
           <img
-            src={newsArticle.urlToImage || fallBackImg}
+            src={newsArticle.image || fallBackImg}
             alt="Article image."
             className="news-card__img"
           />
           <div className="news-card__text">
             <p className="news-card__published-at">
-              {convertDate(newsArticle.publishedAt)}
+              {convertDate(newsArticle.date)}
             </p>
             <h4 className="news-card__title">{newsArticle.title}</h4>
-            <p className="news-card__paragraph">{newsArticle.content}</p>
+            <p className="news-card__paragraph">{newsArticle.text}</p>
             <p className="news-card__source">{newsArticle.source?.name}</p>
           </div>
         </a>
