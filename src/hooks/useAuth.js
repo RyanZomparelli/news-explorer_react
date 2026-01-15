@@ -87,11 +87,15 @@ const useAuth = (setIsLoading, openModal, closeModal) => {
     } catch (err) {
       console.error(err);
 
-      if (err.message === "Incorrect email or password") {
+      if (
+        err.message === "Incorrect email or password" ||
+        // joi/celebrate validation
+        err.error === "Bad Request"
+      ) {
         setTimeout(() => {
           setIsLoading(false);
           openModal("Feedback", {
-            message: err.message,
+            message: "Incorrect email or password",
             type: "error",
           });
         }, 1000);

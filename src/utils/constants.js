@@ -18,4 +18,4 @@ export const newsApiBaseUrl =
 export const baseURL =
   process.env.NODE_ENV === "production"
     ? "https://api.newsexplorer.host2go.net"
-    : "http://localhost:3000";
+    : "http://localhost:3005";
