@@ -24,8 +24,7 @@ const RegistrationModal = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegistration(values);
-    resetForm({ email: "", password: "", username: "" });
+    handleRegistration(values, resetForm);
   };
 
   return (

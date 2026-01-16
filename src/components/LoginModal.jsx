@@ -16,8 +16,7 @@ const LoginModal = ({ activeModal, onOpen, onClose, handleLogin }) => {
   // Events bubble up through the components and data flows back down.
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(values);
-    resetForm({ email: "", password: "" });
+    handleLogin(values, resetForm);
   };
   return (
     <>

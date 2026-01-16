@@ -11,7 +11,7 @@ const useAuth = (setIsLoading, openModal, closeModal) => {
 
   // All the setTimeout callbacks are to show loading states without jarring UI flashes.
 
-  const handleRegistration = async (data) => {
+  const handleRegistration = async (data, resetForm) => {
     setIsLoading(true);
     try {
       const userData = await Auth.register(data);
@@ -22,37 +22,56 @@ const useAuth = (setIsLoading, openModal, closeModal) => {
               "Welcome! Registration Successfully completed! Please sign in.",
             type: "sign-up-success",
           });
+          resetForm({ email: "", password: "", username: "" });
           setIsLoading(false);
         }, 2000);
       }
     } catch (err) {
       console.error(err);
+      // No setTimeout for quick response.
       if (err.message === "Email already in use") {
-        setIsLoading(false);
         openModal("Sign up", {
           registrationEmailError: "This email is not available",
         });
-        return;
-      }
-      setTimeout(() => {
-        if (err.message === "Failed to fetch") {
+        setIsLoading(false);
+      } else if (err.message === "Failed to fetch") {
+        setTimeout(() => {
           openModal("Feedback", {
             message:
               "Unable to connect to server. Please check your connection and try again.",
             type: "error",
           });
-          return;
-        }
-        openModal("Feedback", {
-          message: "Somthing went wrong. Please try again.",
-          type: "error",
-        });
-        setIsLoading(false);
-      }, 1000);
+          setIsLoading(false);
+        }, 1000);
+      }
+      // joi/celebrate
+      else if (err.error === "Bad Request") {
+        setTimeout(() => {
+          openModal("Feedback", {
+            // joi has validation messages for the user.
+            message: err.validation?.body?.message || "Please try again",
+            type: "error",
+          });
+
+          setTimeout(() => openModal("Sign up"), 3000);
+          setIsLoading(false);
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          openModal("Feedback", {
+            message: "Somthing went wrong. Please try again.",
+            type: "error",
+          });
+
+          setTimeout(() => openModal("Sign up"), 2000);
+
+          setIsLoading(false);
+        }, 1000);
+      }
     }
   };
 
-  const handleLogin = async (data) => {
+  const handleLogin = async (data, resetForm) => {
     setIsLoading(true);
 
     try {
@@ -74,6 +93,7 @@ const useAuth = (setIsLoading, openModal, closeModal) => {
         setIsLoading(false);
         setCurrentUser(userData);
         setIsLoggedIn(true);
+        resetForm({ email: "", password: "" });
         openModal("Feedback", {
           message: `Welcome ${userData.name}!`,
           type: "success",
@@ -98,6 +118,8 @@ const useAuth = (setIsLoading, openModal, closeModal) => {
             message: "Incorrect email or password",
             type: "error",
           });
+          // Show the error message then reopen the sign up modal.
+          setTimeout(() => openModal("Sign in"), 2000);
         }, 1000);
       } else {
         setTimeout(() => {
