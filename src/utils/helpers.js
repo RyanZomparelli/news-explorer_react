@@ -48,10 +48,11 @@ export const getFormattedDate = () => {
 
 export const getRequestHeaders = (token = null) => {
   if (!token) {
-    return { Accept: "application/json" };
+    return { Accept: "application/json", "Content-type": "application/json" };
   }
   return {
     Accept: "application/json",
+    "Content-type": "application/json",
     Authorization: `Bearer ${token}`,
   };
 };

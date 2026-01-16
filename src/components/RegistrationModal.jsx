@@ -12,6 +12,8 @@ const RegistrationModal = ({
   onClose,
   message,
   handleRegistration,
+  registrationEmailError,
+  clearRegistrationError,
 }) => {
   const { values, errors, isValid, handleChange, getErrorMsg, resetForm } =
     useFormWithValidation({
@@ -22,8 +24,7 @@ const RegistrationModal = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegistration(values);
-    resetForm({ email: "", password: "", username: "" });
+    handleRegistration(values, resetForm);
   };
 
   return (
@@ -40,6 +41,7 @@ const RegistrationModal = ({
         resetForm={resetForm}
         message={message}
         handleSubmit={handleSubmit}
+        registrationEmailError={registrationEmailError}
       >
         <fieldset className="modal-form__inputs">
           <label htmlFor="registration-email" className="modal-form__label">
@@ -53,7 +55,12 @@ const RegistrationModal = ({
             className="modal-form__input"
             placeholder="Enter email"
             required
-            onChange={handleChange}
+            onChange={(e) => {
+              handleChange(e);
+              if (registrationEmailError) {
+                clearRegistrationError();
+              }
+            }}
           />
           <span className="modal-form__error modal-form__error_email">
             {getErrorMsg("email", "Please enter a valid email")}

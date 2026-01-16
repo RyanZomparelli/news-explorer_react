@@ -1,21 +1,34 @@
-// CRUD ops to be handled by express API later.
+import { baseURL } from "./constants";
+import * as Helpers from "../utils/helpers";
 
-export const getItems = () => {
-  const items = localStorage.getItem("saved-articles");
-  return items ? JSON.parse(items) : [];
+export const getSavedItems = (token) => {
+  return fetch(`${baseURL}/articles`, {
+    headers: Helpers.getRequestHeaders(token),
+  }).then((res) => Helpers.handleResponse(res));
 };
 
-export const saveItem = (article) => {
-  const currentArticles = getItems();
-  const newArticles = [...currentArticles, article];
-  localStorage.setItem("saved-articles", JSON.stringify(newArticles));
+export const saveItem = (
+  { keyword, title, text, date, source, link, image },
+  token
+) => {
+  return fetch(`${baseURL}/articles`, {
+    method: "POST",
+    headers: Helpers.getRequestHeaders(token),
+    body: JSON.stringify({
+      keyword,
+      title,
+      text,
+      date,
+      source,
+      link,
+      image,
+    }),
+  }).then((res) => Helpers.handleResponse(res));
 };
 
-export const deleteItem = (articleToDelete) => {
-  const currentArticles = getItems();
-  const updatedArticles = currentArticles.filter((article) => {
-    return article.url !== articleToDelete.url;
-  });
-
-  localStorage.setItem("saved-articles", JSON.stringify(updatedArticles));
+export const deleteItem = (id, token) => {
+  return fetch(`${baseURL}/articles/${id}`, {
+    method: "DELETE",
+    headers: Helpers.getRequestHeaders(token),
+  }).then((res) => Helpers.handleResponse(res));
 };

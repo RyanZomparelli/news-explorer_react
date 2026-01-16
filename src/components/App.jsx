@@ -18,6 +18,10 @@ import useSearch from "../hooks/useSearch";
 import useAuth from "../hooks/useAuth";
 import useSavedNews from "../hooks/useSavedNews";
 
+// UTILITY
+import * as Token from "../utils/token";
+import * as Auth from "../utils/auth";
+
 // CONTEXT
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
@@ -27,8 +31,16 @@ function App() {
 
   // CUSTOM HOOKS
 
-  const { activeModal, openModal, closeModal, message, type, articleToDelete } =
-    useModal();
+  const {
+    activeModal,
+    openModal,
+    closeModal,
+    message,
+    type,
+    articleToDelete,
+    registrationEmailError,
+    clearRegistrationError,
+  } = useModal();
 
   // I like using custom hooks to keep the component clean and readable.
   const {
@@ -43,7 +55,9 @@ function App() {
   // Events bubble up through the components and data flows back down.
   const {
     currentUser,
+    setCurrentUser,
     isLoggedIn,
+    setIsLoggedIn,
     handleRegistration,
     handleLogin,
     handleSignOut,
@@ -56,7 +70,7 @@ function App() {
     getSavedArticles,
     handleSaveArticle,
     handleDeleteArticle,
-  } = useSavedNews();
+  } = useSavedNews(openModal, closeModal);
 
   useEffect(() => {
     getSavedArticles();
@@ -68,22 +82,23 @@ function App() {
     setNewsArticles([]);
   }, []);
 
-  // For stage 3..
-  // useEffect(() => {
-  //   const token = Token.getToken();
-  //   if (token) {
-  //     Auth.getCurrentUser(token)
-  //       .then((user) => {
-  //         setCurrentUser(user);
-  //         setIsLoggedIn(true);
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //         Token.deleteToken();
-  //         setIsLoggedIn(false);
-  //       });
-  //   }
-  // }, []);
+  useEffect(() => {
+    const token = Token.getToken();
+    if (token) {
+      // "persistent authentication" or "session restoration".
+      Auth.getCurrentUser(token)
+        .then((user) => {
+          setCurrentUser(user);
+          setIsLoggedIn(true);
+          getSavedArticles();
+        })
+        .catch((err) => {
+          console.error(err);
+          Token.deleteToken();
+          setIsLoggedIn(false);
+        });
+    }
+  }, []);
 
   return (
     <CurrentUserContext.Provider
@@ -147,6 +162,8 @@ function App() {
           onOpen={openModal}
           onClose={closeModal}
           handleRegistration={handleRegistration}
+          registrationEmailError={registrationEmailError}
+          clearRegistrationError={clearRegistrationError}
         />
         <FeedbackModal
           activeModal={activeModal === "Feedback"}

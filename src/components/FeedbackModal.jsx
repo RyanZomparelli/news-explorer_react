@@ -33,6 +33,11 @@ const FeedbackModal = ({
             </button>
           </>
         )}
+        {type === "success" && (
+          <p className="feedback-modal__message feedback-modal__message_type_success">
+            {message}
+          </p>
+        )}
         {type === "error" && (
           <p className="feedback-modal__message">{message}</p>
         )}

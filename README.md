@@ -5,6 +5,8 @@
 **Deployed Site**:
 https://newsexplorer.host2go.net/
 
+**Backend GitHub repo:** https://github.com/RyanZomparelli/news-explorer_express
+
 🎨 **Design:** https://www.figma.com/design/3ottwMEhlBt95Dbn8dw1NH/Your-Final-Project
 
 ## 🎥 Project Pitch Videos
@@ -12,7 +14,7 @@ https://newsexplorer.host2go.net/
 Check out these videos, where I describe my project
 and some challenges I faced while building it:
 
-- **UI & Frontend Overview (5 min):** https://youtu.be/vLmWgOTlxhQ
+- **UI & Frontend Overview (pre-backend integration 5 min):** https://youtu.be/vLmWgOTlxhQ
 - **Backend & API Overview (5 min):** Coming soon
 
 ---
