@@ -54,7 +54,7 @@ const SavedNewsCard = ({ newsArticle, openModal }) => {
             className="news-card__save-icon"
           />
         </button>
-        <a href={newsArticle.url} className="news-card__link" target="_blank">
+        <a href={newsArticle.link} className="news-card__link" target="_blank">
           <img
             src={newsArticle.image || fallBackImg}
             alt="Article image."

@@ -25,7 +25,7 @@ const NewsCard = ({
 
   // Determine if this newsArticle is already saved.
   const isAlreadyLiked = savedNewsArticles.some(
-    (article) => article.link === newsArticle.url
+    (article) => article.link === newsArticle.url,
   );
 
   // Only saved articles have an id property. So I need to pass a saved article to
@@ -81,14 +81,19 @@ const NewsCard = ({
               isLoggedIn && isAlreadyLiked
                 ? saveIconMarked
                 : isLoggedIn && isHovered
-                ? saveIconHover
-                : saveIconNormal
+                  ? saveIconHover
+                  : saveIconNormal
             }
             alt="Save button."
             className="news-card__save-icon"
           />
         </button>
-        <a href={newsArticle.link} className="news-card__link" target="_blank">
+        <a
+          href={newsArticle.url}
+          className="news-card__link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img
             src={newsArticle.urlToImage || fallBackImg}
             alt="Article image."
