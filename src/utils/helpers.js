@@ -89,3 +89,10 @@ export const formatKeywords = (keywords) => {
     return "";
   }
 };
+
+export const stripHtmlTags = (text) => {
+  if (!text) return "";
+
+  // Remove HTML tags using regex
+  return text.replace(/<[^>]*>/g, "");
+};

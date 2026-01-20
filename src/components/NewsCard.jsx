@@ -37,6 +37,8 @@ const NewsCard = ({
 
   const { convertDate } = Helpers.getFormattedDate();
 
+  const cleanContent = Helpers.stripHtmlTags(newsArticle.content);
+
   return (
     <li className="news-articles__list-item">
       <article className="news-card">
@@ -104,7 +106,7 @@ const NewsCard = ({
               {convertDate(newsArticle.publishedAt)}
             </p>
             <h4 className="news-card__title">{newsArticle.title}</h4>
-            <p className="news-card__paragraph">{newsArticle.content}</p>
+            <p className="news-card__paragraph">{cleanContent}</p>
             <p className="news-card__source">{newsArticle.source?.name}</p>
           </div>
         </a>
