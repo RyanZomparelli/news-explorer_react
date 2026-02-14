@@ -9,7 +9,7 @@ export const getSavedItems = (token) => {
 
 export const saveItem = (
   { keyword, title, text, date, source, link, image },
-  token
+  token,
 ) => {
   return fetch(`${baseURL}/articles`, {
     method: "POST",

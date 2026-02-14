@@ -74,7 +74,7 @@ function App() {
 
   useEffect(() => {
     getSavedArticles();
-  }, []);
+  }, [currentUser]);
 
   // Reset search form on page load.
   useEffect(() => {
@@ -90,7 +90,6 @@ function App() {
         .then((user) => {
           setCurrentUser(user);
           setIsLoggedIn(true);
-          getSavedArticles();
         })
         .catch((err) => {
           console.error(err);
