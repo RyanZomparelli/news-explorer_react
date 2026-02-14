@@ -120,6 +120,7 @@ function App() {
                 toggleMobileMenu={toggleMobileMenu}
                 closeMobileMenu={closeMobileMenu}
                 newsArticles={newsArticles}
+                setNewsArticles={setNewsArticles}
                 savedNewsArticles={savedNewsArticles}
                 handleSaveArticle={handleSaveArticle}
               />

@@ -19,6 +19,7 @@ const Main = ({
   toggleMobileMenu,
   closeMobileMenu,
   newsArticles,
+  setNewsArticles,
   savedNewsArticles,
   handleSaveArticle,
 }) => {
@@ -32,6 +33,7 @@ const Main = ({
         isMobileMenuOpen={isMobileMenuOpen}
         toggleMobileMenu={toggleMobileMenu}
         closeMobileMenu={closeMobileMenu}
+        setNewsArticles={setNewsArticles}
       />
       {/* Could I improve this component by putting this logic into a helper function? */}
       {loadingSearch ? (
