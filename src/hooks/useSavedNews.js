@@ -9,7 +9,6 @@ const useSavedNews = (openModal, closeModal) => {
   const getSavedArticles = async () => {
     const token = Token.getToken();
     if (!token) {
-      // setSavedNewsArticles([]);
       return;
     }
     try {

@@ -1,12 +1,17 @@
 import "../blocks/searchForm.css";
 
+import { useEffect, useContext } from "react";
+
 // HOOKS
 import useFormWithValidation from "../hooks/useFormWithValidation";
 
 //ASSETS
 import closeIconDark from "../assets/close_btn_dark.svg";
 
-const SearchForm = ({ handleSearch, setSearchStatus }) => {
+//CONTEXT
+import CurrentUserContext from "../contexts/CurrentUserContext";
+
+const SearchForm = ({ handleSearch, setSearchStatus, setNewsArticles }) => {
   const { values, handleChange, resetForm } = useFormWithValidation({
     search: "",
   });
@@ -15,6 +20,18 @@ const SearchForm = ({ handleSearch, setSearchStatus }) => {
     e.preventDefault();
     handleSearch(values.search);
   };
+
+  const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
+
+  useEffect(() => {
+    // Only reset after logging out. When you log in after searching somthing the
+    // search should persist.
+    if (!isLoggedIn) {
+      setSearchStatus("");
+      setNewsArticles([]);
+      resetForm({ search: "" });
+    }
+  }, [currentUser, isLoggedIn]);
 
   return (
     // When dealing with search forms that don't have visible titles or labels use

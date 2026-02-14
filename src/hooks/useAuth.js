@@ -1,5 +1,5 @@
 // LIBRARY IMPORTS
-import { use, useState } from "react";
+import { useState } from "react";
 
 // UTILITY
 import * as Auth from "../utils/auth";

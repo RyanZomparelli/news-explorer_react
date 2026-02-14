@@ -13,6 +13,7 @@ const Header = ({
   activeModal,
   handleSearch,
   setSearchStatus,
+  setNewsArticles,
 }) => {
   return (
     <header className="header">
@@ -45,6 +46,7 @@ const Header = ({
         <SearchForm
           handleSearch={handleSearch}
           setSearchStatus={setSearchStatus}
+          setNewsArticles={setNewsArticles}
         />
       </div>
     </header>
