@@ -1,6 +1,6 @@
 # 📰 News Explorer — Frontend
 
-**News Explorer** is a responsive React application that allows users to search for current news articles by keyword, explore results from the past week, and save articles to their personal account. This repository contains the **frontend** of the application. Backend integration is planned and will be added in a future update.
+**News Explorer** is a responsive React application that allows users to search for current news articles by keyword, explore results from the past week, and save articles to their personal account. This repository contains the **frontend** of the application. See the link below for the backend repo.
 
 **Deployed Site**:
 https://newsexplorer.host2go.net/
@@ -144,7 +144,6 @@ src/
   Used for global auth state (`currentUser`, `isLoggedIn`) to avoid prop drilling.
 
 - **Custom Hooks**
-
   - `useAuth` — login, registration, logout logic
   - `useModal` — centralized modal state
   - `useSearch` — encapsulated search flow and status handling
